@@ -6,9 +6,9 @@ export const users = pgTable(
     id: serial("id").primaryKey(),
     name: text("name").notNull(),
     username: text("username").notNull(),
-    password: text("password"),
+    password: text("password").notNull(),
 
-    createdAt: timestamp("created_at"),
+    createdAt: timestamp("created_at").defaultNow(),
   },
   (table) => ({
     usernameUnique: unique("username_unique").on(table.username),

@@ -8,6 +8,20 @@
       "when": 1727308061469,
       "tag": "0000_bouncy_talon",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1727385162196,
+      "tag": "0001_parched_marvex",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1727558091119,
+      "tag": "0002_orange_hairball",
+      "breakpoints": true
     }
   ]
 }

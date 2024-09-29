@@ -1,5 +1,5 @@
 # JWT Authentication
 
-## GET /ping
+## GET /
 
-`GET http://localhost:3333/ping`
+`GET http://localhost:3333/`

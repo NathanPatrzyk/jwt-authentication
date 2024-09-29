@@ -1,17 +1,27 @@
 import fastify from "fastify";
-import pingRoute from "./features/ping/route.js";
+import {
+  serializerCompiler,
+  validatorCompiler,
+  type ZodTypeProvider,
+} from "fastify-type-provider-zod";
+import fastifyCors from "@fastify/cors";
+import { router } from "./routes.js"
 
-const app = fastify({
-  logger: true,
+const app = fastify().withTypeProvider<ZodTypeProvider>();
+
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
+
+app.register(fastifyCors, {
+  origin: "*",
 });
 
-app.route(pingRoute);
+app.register(router)
 
-try {
-  await app.listen({
+app
+  .listen({
     port: 3333,
+  })
+  .then(() => {
+    console.log("Server is running on http://localhost:3333");
   });
-} catch (error) {
-  app.log.error(error);
-  process.exit(1);
-}
