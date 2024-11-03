@@ -2,8 +2,13 @@ import bcrypt from "bcryptjs";
 import { db } from "../db/index.js";
 import { users } from "../db/schema.js";
 import { eq } from "drizzle-orm";
-import { sign } from "jsonwebtoken";
+import * as _jsonwebtoken from "jsonwebtoken";
+import { sign as signType } from "jsonwebtoken";
 import { env } from "process";
+
+const jsonwebtoken = <any>_jsonwebtoken;
+
+const sign: typeof signType = jsonwebtoken.default.sign;
 
 interface AuthRequest {
   username: string;
